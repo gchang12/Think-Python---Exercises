@@ -1,0 +1,50 @@
+import math
+
+def check_int(n):
+    """This function takes any argument, and raises a type error if it is not an integer.."""
+    if not type(n)==int or n<=0:
+        raise TypeError
+
+def est_pi(n):
+    """This function takes a positive integer 'n' as a parameter, and then estimates pi through iteration 'n' times."""
+    def term(k,l):
+        return 1/(1+(k/l)**2)/l
+    total=0
+    n=int(n)
+    for i in range(n):
+        total+=term(i+1,n)
+    return total*4
+
+def est_exp1(n):
+    """This function takes a positive number as an argument, and estimates pi using partial sums."""
+    sum=0
+    check_int(n)
+    for i in range(n):
+        sum+=1/math.factorial(i)
+    return sum
+
+def est_exp2(n):
+    """This function takes a positive number as an argument, and estimates pi using the 'interest-rate method'."""
+    check_int(n)
+    return (1+1/n)**n
+
+def estimate_table(function,constant):
+    """This function takes a function as an argument, and prints the parameter used for estimation,
+    the value it estimates, and its difference with the theoretical value."""
+    print("This function will print a table displaying:\n(1) The positive integer used for estimation,\n"
+          "(2) The estimation calculated using that integer,\n(3) The theoretical value,\n(4) And the absolute difference"
+          " of the estimation and the theoretical value.\n")
+    length1=5
+    length2=15
+    n = int(input("Now, please input a positive integer to be used in the estimation process. Type in anything else to exit: \n"))
+    while True:
+        if n<=0:
+            break
+        print("n"," "*length1,"Estimate"," "*length2,"Theoretical"," "*length2,"Absolute difference")
+        print("-", " " * length1,"-"*len("Estimate"), " " * length2,"-"*len("Theoretical"), " " * length2,"-"*len("Absolute difference"))
+        print(n," "*(length1+1-len(str(n))),function(n)," "*(length2+len("Estimate")-len(str(function(n)))),
+              constant," "*(length2+len("Theoretical")-len(str(constant))),abs(constant-function(n)),"\n")
+        n=int(input("Would you like to input another positive integer? If so, input it, or type in anything else to quit: \n"))
+    print("Thank you for using this program to estimate a known constant using a function.")
+
+estimate_table(est_exp1,math.exp(1))
