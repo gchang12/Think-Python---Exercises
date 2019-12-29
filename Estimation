@@ -41,6 +41,7 @@ def estimate_table(function,constant):
     title3="Theoretical"
     title4="Absolute difference"
     n = int(input("Now, please input a positive integer to be used in the estimation process. Type in anything else to exit: \n"))
+    #Want to know how to avoid error messages when typing in anything other than a positive integer.
     while True:
         if n<=0:
             break
