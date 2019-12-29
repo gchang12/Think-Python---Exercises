@@ -47,4 +47,4 @@ def estimate_table(function,constant):
         n=int(input("Would you like to input another positive integer? If so, input it, or type in anything else to quit: \n"))
     print("Thank you for using this program to estimate a known constant using a function.")
 
-estimate_table(est_exp1,math.exp(1))
+#I have not worked out how to properly exit the estimate_table function if the user types in anything other than an integer.
