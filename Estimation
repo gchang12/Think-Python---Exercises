@@ -36,15 +36,17 @@ def estimate_table(function,constant):
           " of the estimation and the theoretical value.\n")
     length1=5
     length2=15
+    title1="n"
+    title2="Estimate"
+    title3="Theoretical"
+    title4="Absolute difference"
     n = int(input("Now, please input a positive integer to be used in the estimation process. Type in anything else to exit: \n"))
     while True:
         if n<=0:
             break
-        print("n"," "*length1,"Estimate"," "*length2,"Theoretical"," "*length2,"Absolute difference")
-        print("-", " " * length1,"-"*len("Estimate"), " " * length2,"-"*len("Theoretical"), " " * length2,"-"*len("Absolute difference"))
-        print(n," "*(length1+1-len(str(n))),function(n)," "*(length2+len("Estimate")-len(str(function(n)))),
-              constant," "*(length2+len("Theoretical")-len(str(constant))),abs(constant-function(n)),"\n")
+        print(title1," "*length1,title2," "*length2,title3," "*length2,title4)
+        print("-"*len(title1), " " * length1,"-"*len(title2), " " * length2,"-"*len(title3), " " * length2,"-"*len(title4))
+        print(n," "*(length1+len(title1)-len(str(n))),function(n)," "*(length2+len(title2)-len(str(function(n)))),
+              constant," "*(length2+len(title3)-len(str(constant))),abs(constant-function(n)),"\n")
         n=int(input("Would you like to input another positive integer? If so, input it, or type in anything else to quit: \n"))
     print("Thank you for using this program to estimate a known constant using a function.")
-
-#I have not worked out how to properly exit the estimate_table function if the user types in anything other than an integer.
