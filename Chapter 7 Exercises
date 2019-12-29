@@ -23,12 +23,14 @@ def test_sq_rt(estf,truef,a):
     print("a"," "*ln1,"estimate"," "*ln3,"true"," "*ln3,"diff")
     print("-"," "*ln1,"-"*ln2," "*ln3,"-"*ln4," "*ln3,"-"*ln1)
     k=1
+    if a<0:
+        return None
     while k<=int(a):
         print(k," "*(4-len(str(k))),estf(k)," "*((ln3+ln2)-len(str(estf(k)))),truef(k)," "*((ln3+ln4)-len(str(truef(k)))),
               abs(estf(k)-truef(k)))
         k+=1
 
-test_sq_rt(mysqrt,math.sqrt,55)
+test_sq_rt(mysqrt,math.sqrt,-5)
 
 #2.
 
