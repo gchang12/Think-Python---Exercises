@@ -65,7 +65,7 @@ def hypotenuse_sequence(n):
     return math.sqrt(x**2+y**2)
 
 def est_pi_8th(n):
-    """This function returns an actual estimate of pi using the est_pi2 function above.
+    """This function returns an actual estimate of pi using the function above.
     This is so very similar to Archimedes' method of calculating pi, it's not even funny.
     It's basically inscribing a circle in a square instead of the other way around."""
     return hypotenuse_sequence(n)*2**(n+1)
