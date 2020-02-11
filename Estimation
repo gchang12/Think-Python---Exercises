@@ -51,3 +51,21 @@ def estimate_table(function,constant):
               constant," "*(length2+len(title3)-len(str(constant))),abs(constant-function(n)),"\n")
         n=int(input("Would you like to input another positive integer? If so, input it, or type in anything else to quit: \n"))
     print("Thank you for using this program to estimate a known constant using a function.")
+
+def hypotenuse_sequence(n):
+    """This function estimates pi using right triangles inscribed within half a semicircle."""
+    if type(n)!=int:
+        raise TypeError
+    if n==0:
+        return math.sqrt(2)
+    else:
+        angle = math.tan(2 ** (-(n - 1)) * math.atan(1))
+        x = (hypotenuse_sequence(n - 1) / 2)
+        y = (1 - x/ angle )
+    return math.sqrt(x**2+y**2)
+
+def est_pi_8th(n):
+    """This function returns an actual estimate of pi using the est_pi2 function above.
+    This is so very similar to Archimedes' method of calculating pi, it's not even funny.
+    It's basically inscribing a circle in a square instead of the other way around."""
+    return hypotenuse_sequence(n)*2**(n+1)
