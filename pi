@@ -1,0 +1,50 @@
+import math
+
+def check_nat(n):
+    """This function takes any argument, and raises a type error if it is not a positive integer.
+
+    Input: anything
+    Output: Boolean indicating if it is a natural number or not
+
+    """
+    if not type(n)==int or n<=0:
+        raise TypeError
+
+def est_pi_331(n):
+    """This function takes a positive integer 'n' as a parameter, and then estimates pi through iteration 'n' times.
+
+    Input: positive integer
+    Output: estimate of pi
+
+    """
+    def term(k,l):
+        return 1/(1+(k/l)**2)/l
+    total=0
+    n=int(n)
+    for i in range(n):
+        total+=term(i+1,n)
+    return total*4
+
+def hypotenuse_sequence(n):
+    """This function calculates the length of the hypotenuse of any given right triangle after the n-th recursion.
+
+    Input: integer
+    Output: positive number
+
+    """
+    check_nat(n)
+    angle = math.tan(2 ** (-(n - 1)) * math.atan(1))
+    x = (hypotenuse_sequence(n - 1) / 2)
+    y = (1 - x/ angle )
+    return math.sqrt(x**2+y**2)
+
+def est_pi_8th(n):
+    """This function returns an actual estimate of pi using the function above.
+    This is so very similar to Archimedes' method of calculating pi, it's not even funny.
+    It's basically inscribing a circle in a square instead of the other way around.
+
+    Input: integer
+    Output: estimate of pi
+
+    """
+    return hypotenuse_sequence(n)*2**(n+1)
